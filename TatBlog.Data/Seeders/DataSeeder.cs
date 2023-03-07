@@ -58,7 +58,7 @@ namespace TatBlog.Data.Seeders
         private IList<Category> AddCategories() {
             var categories = new List<Category>()
             { 
-                new() {Name = "Net Core", Description = "Net Core", UrlSlug = "Net Core" },
+                new() { Name = "Net Core", Description = "Net Core", UrlSlug = "Net Core" },
                 new() { Name = "Architecture", Description = "Architecture", UrlSlug = "Architecture" },
                 new() { Name = "Messaging", Description = "Messaging", UrlSlug = "Messaging" },
                 new() { Name = "OOP", Description = "OOP", UrlSlug = "OOP" },
