@@ -16,8 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\GIGABYTE\Documents\GitHub\PTUDWNC-2011437\TatBlog.WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Views/Shared/_Headercshtml.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJjc2h0bWwuY3NodG1s
+[C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Views/Blog/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1xDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Views/Blog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Views/Shared/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Views/Shared/_Layout.cshtml]

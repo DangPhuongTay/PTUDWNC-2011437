@@ -1,10 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Blog\About.cshtml" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TatBlog.Core\TatBlog.Core.csproj" />
@@ -14,11 +18,14 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\templates\emails\" />
     <Folder Include="wwwroot\uploads\pictures\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Blog\About.cshtml" />
   </ItemGroup>
 
 </Project>
