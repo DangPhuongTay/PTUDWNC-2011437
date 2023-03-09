@@ -13,6 +13,9 @@ namespace TatBlog.Data.Seeders
     public class DataSeeder : IDataSeeder
     {
         private readonly BlogDbContext _dbContext;
+
+        public object categories { get; private set; }
+
         public DataSeeder(BlogDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -58,11 +61,11 @@ namespace TatBlog.Data.Seeders
         private IList<Category> AddCategories() {
             var categories = new List<Category>()
             { 
-                new() { Name = "Net Core", Description = "Net Core", UrlSlug = "Net Core" },
-                new() { Name = "Architecture", Description = "Architecture", UrlSlug = "Architecture" },
-                new() { Name = "Messaging", Description = "Messaging", UrlSlug = "Messaging" },
-                new() { Name = "OOP", Description = "OOP", UrlSlug = "OOP" },
-                new() { Name = "Design Patterns", Description = "Design Patterns", UrlSlug = "Design Patterns"}
+                new() { Name = "Net Core", Description = "Net Core", UrlSlug = "Net Core",ShowMenu = false },
+                new() { Name = "Architecture", Description = "Architecture", UrlSlug = "Architecture",ShowMenu = false },
+                new() { Name = "Messaging", Description = "Messaging", UrlSlug = "Messaging",ShowMenu = false },
+                new() { Name = "OOP", Description = "OOP", UrlSlug = "OOP",ShowMenu = false },
+                new() { Name = "Design Patterns", Description = "Design Patterns", UrlSlug = "Design Patterns",ShowMenu = false}
 
             };
             _dbContext.AddRange(categories);
@@ -90,7 +93,7 @@ namespace TatBlog.Data.Seeders
         }
         private IList<Post> AddPosts(
             IList<Author> authors,
-            IList<Category> Categories,
+            IList<Category> categories,
             IList<Tag> tags)
         {
             var posts = new List<Post>()
@@ -107,6 +110,7 @@ namespace TatBlog.Data.Seeders
                     ModifiedDate = null,
                     ViewCount = 10,
                     Author = authors[0],
+                    Category = categories[0],
                     Tags = new List<Tag>()
                     {
                         tags[0]

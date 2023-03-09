@@ -32,6 +32,11 @@ var app = builder.Build();
         name: "default",
         pattern: "{controller=Blog}/{action=Index}/{id?}");
 }
+using(var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetService<IDataSeeder>();
+    seeder.Initialize();
+}
 
 
 
