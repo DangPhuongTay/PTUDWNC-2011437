@@ -1,40 +1,38 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Dynamic.Core;
+using Microsoft.EntityFrameworkCore;
 using TatBlog.Core.Collections;
 using TatBlog.Core.Contracts;
 
-namespace TatBlog.Services.Extensions
+namespace TatBlog.Services.Extentions
 {
     public static class PagedListExtensions
     {
-        public static string GetOrderExpession (
+        public static string GetOrderExpression(
             this IPagingParams pagingParams,
-            string defaultColumn = "Id"
-            )
+            string defaultColumn = "ID")
         {
             var column = string.IsNullOrWhiteSpace(pagingParams.SortColumn)
                 ? defaultColumn
-                :pagingParams.SortColumn;
+                : pagingParams.SortColumn;
             var order = "ASC".Equals(
                 pagingParams.SortOrder, StringComparison.OrdinalIgnoreCase)
                 ? pagingParams.SortOrder : "DESC";
-            return $"{column}{order}";
+            return $"{column} {order}";
         }
         public static async Task<IPagedList<T>> ToPagedListAsync<T>(
             this IQueryable<T> source,
             IPagingParams pagingParams,
-            CancellationToken cancellationToken = default
-            )
+            CancellationToken cancellationToken = default)
         {
             var totalCount = await source.CountAsync(cancellationToken);
             var items = await source
-                .OrderBy(pagingParams.GetOrderExpession())
-                .Skip((pagingParams.PageNumber -1) * pagingParams.PageSize)
+                .OrderBy(pagingParams.GetOrderExpression())
+                .Skip((pagingParams.PageNumber - 1) * pagingParams.PageSize)
                 .Take(pagingParams.PageSize)
                 .ToListAsync(cancellationToken);
             return new PagedList<T>(
@@ -45,25 +43,22 @@ namespace TatBlog.Services.Extensions
         }
         public static async Task<IPagedList<T>> ToPagedListAsync<T>(
             this IQueryable<T> source,
-            int pageNumber =1,
+            int pageNumber = 1,
             int pageSize = 10,
             string sortColumn = "Id",
             string sortOrder = "DESC",
-            CancellationToken cancellationToken= default
-            )
+            CancellationToken cancellationToken = default)
         {
             var totalCount = await source.CountAsync(cancellationToken);
             var items = await source
-                .OrderBy($"{sortColumn}{sortOrder}")
+                .OrderBy($"{sortColumn} {sortOrder}")
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync(cancellationToken);
             return new PagedList<T>(
-                items,
-                pageNumber,
-                pageSize,
-                totalCount);
+                items, pageNumber, pageSize, totalCount);
+
         }
-            
+
     }
 }

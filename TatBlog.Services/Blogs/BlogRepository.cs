@@ -8,7 +8,7 @@ using TatBlog.Core.Entities;
 using TatBlog.Core.DTO;
 using TatBlog.Data.Contexts;
 using TatBlog.Core.Contracts;
-using TatBlog.Services.Extensions;
+using TatBlog.Services.Extentions;
 
 namespace TatBlog.Services.Blogs
 {
@@ -124,6 +124,7 @@ namespace TatBlog.Services.Blogs
         public IQueryable<Post> FilterPosts(PostQuery postQuery)
         {
             IQueryable<Post> posts = _context.Set<Post>()
+                .Include(x=>x.Tags)
                 .Include(x => x.Category)
                 .Include(x => x.Author);
 
