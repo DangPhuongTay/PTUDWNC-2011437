@@ -1,15 +1,3 @@
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.deps.json
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.dll
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.pdb
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.csproj.AssemblyReference.cache
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.AssemblyInfoInputs.cache
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.AssemblyInfo.cs
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.csproj.CoreCompileInputs.cache
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.dll
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\refint\TatBlog.Core.dll
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.pdb
-C:\Users\GIGABYTE\Documents\SRC\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\ref\TatBlog.Core.dll
 C:\Users\GIGABYTE\Documents\GitHub\PTUDWNC-2011437\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.deps.json
 C:\Users\GIGABYTE\Documents\GitHub\PTUDWNC-2011437\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.dll
 C:\Users\GIGABYTE\Documents\GitHub\PTUDWNC-2011437\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.pdb

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2KijhqMI32MB3FriZDZcypShSTssjOUj6SnH1iikyWY=",
+  "Hash": "yvz5fiG5xODUOJFG5BeI24/sqh60xw84llG6PjZA72I=",
   "Source": "TatBlog.WebApp",
   "BasePath": "_content/TatBlog.WebApp",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\image_1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\image_2.jpg",
+      "SourceId": "TatBlog.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\",
+      "BasePath": "_content/TatBlog.WebApp",
+      "RelativePath": "images/image_2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\image_2.jpg"
     },
     {
       "Identity": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\loc.jpg",
