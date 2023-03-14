@@ -27,8 +27,9 @@ namespace TatBlog.WebApp.Controllers
 
             return View(postsList);
         }
-        public IActionResult About() => View();
+        
         public IActionResult Contact() => View();
+        public IActionResult About() => View();
         public IActionResult Rss() => Content("Nội dung sẽ được cập nhật");
     }
 }

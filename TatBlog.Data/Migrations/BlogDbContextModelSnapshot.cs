@@ -162,8 +162,9 @@ namespace TatBlog.Data.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("ViewCount")
-                        .HasMaxLength(0)
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.HasKey("Id");
 

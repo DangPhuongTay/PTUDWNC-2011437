@@ -35,7 +35,7 @@ namespace TatBlog.Data.Mappings
               
             builder.Property(p => p.ViewCount)
                .IsRequired()
-               .HasMaxLength(0);
+               .HasDefaultValue(0);
             builder.Property(p => p.Published)
                .IsRequired()
                .HasDefaultValue(false);

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Blog\About.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TatBlog.Core\TatBlog.Core.csproj" />
     <ProjectReference Include="..\TatBlog.Data\TatBlog.Data.csproj" />
     <ProjectReference Include="..\TatBlog.Services\TatBlog.Services.csproj" />
@@ -25,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Blog\About.cshtml" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.4" />
   </ItemGroup>
 
 </Project>

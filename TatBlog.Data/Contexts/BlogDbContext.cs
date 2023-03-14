@@ -15,7 +15,13 @@ namespace TatBlog.Data.Contexts
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public BlogDbContext(DbContextOptions<BlogDbContext> options):base(options){
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=DESKTOP-O2DJO0P;Database=DataBlog;Trusted_Connection =True;MultipleActiveResultSets=true;Encrypt=False");
+        //}
+        public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
+        {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
