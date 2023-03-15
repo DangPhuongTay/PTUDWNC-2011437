@@ -44,5 +44,9 @@ namespace TatBlog.Services.Blogs
         int pageNumber = 1,
         int pageSize = 10,
         CancellationToken cancellationToken = default);
+        Task<Post> GetPostByIdAsync(
+           int postId,
+           CancellationToken cancellationToken = default);
+     
     }
 }

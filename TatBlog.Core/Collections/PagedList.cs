@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TatBlog.Core.Contracts;
+using static TatBlog.Core.Contracts.IPagedList;
 
 namespace TatBlog.Core.Collections
 {
@@ -53,16 +54,14 @@ namespace TatBlog.Core.Collections
         public bool IsLastPage => (PageIndex >= (PageCount - 1));
 
 
-      
-        IEnumerator IEnumerable.GetEnumerator()
+
+        public IEnumerator<T> GetEnumerator()
         {
             return _subset.GetEnumerator();
         }
-
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-           
-            return _subset.GetEnumerator();
+            return GetEnumerator();
         }
 
         public T this[int index] => _subset[index];

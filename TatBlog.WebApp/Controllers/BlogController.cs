@@ -11,9 +11,9 @@ namespace TatBlog.WebApp.Controllers
             _blogRepository = blogRepository;
         }
         public async Task<IActionResult> Index(
-       [FromQuery(Name = "k")] string keyword = null,
+       [FromQuery(Name = "k")] string keyword = "",
        [FromQuery(Name = "p")] int pageNumber = 1,
-       [FromQuery(Name = "ps")] int pageSize = 10)
+       [FromQuery(Name = "ps")] int pageSize = 5)
         {
             var postQuery = new PostQuery()
             {
@@ -27,7 +27,7 @@ namespace TatBlog.WebApp.Controllers
 
             return View(postsList);
         }
-        
+       
         public IActionResult Contact() => View();
         public IActionResult About() => View();
         public IActionResult Rss() => Content("Nội dung sẽ được cập nhật");

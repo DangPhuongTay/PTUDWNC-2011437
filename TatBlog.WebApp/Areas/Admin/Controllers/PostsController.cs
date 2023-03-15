@@ -9,8 +9,6 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
     public class PostsController : Controller
     {
 
-
-
         //public async Task<IActionResult> Index(PostFilterModel model)
         //{
         //    var postQuery = new PostQuery()
@@ -41,7 +39,7 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         public async Task<IActionResult> Index (PostFilterModel model)
         {
             var postQuery = _mapper.Map<PostQuery>(model);
-            ViewBag.PostQuery = await _blogRepository
+            ViewBag.PostsList = await _blogRepository
                 .GetPagedPostsAsync(postQuery,1,5);
             await PopulatePostFilterModelAsync(model);
             return View();
@@ -62,5 +60,22 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
             });
 
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id = 0)
+        {
+            var post =  id > 0 
+                ? await _blogRepository.GetPostByIdAsync(id,true) 
+                : null;
+
+            var model = post == null
+                ? new PostEditModel()
+                : _mapper.Map<PostEditModel>(post);
+
+            await PopulatePostFilterModelAsync(model);
+
+            return View(model);
+        }
+
+        
     }
 }

@@ -214,12 +214,23 @@ namespace TatBlog.Services.Blogs
 
             return posts;
         }
+        public async Task<Post> GetPostByIdAsync(
+            int postId,
+            CancellationToken cancellationToken = default)
+        {
+            IQueryable<Post> postsQuery = _context.Set<Post>();
+            if (postId > 0)
+            {
+                postsQuery = postsQuery.Where(x => x.Id == postId);
+            }
+            return await postsQuery.FirstOrDefaultAsync(cancellationToken);
 
+        }
 
         public async Task<IPagedList<Post>> GetPagedPostsAsync(
         PostQuery postQuery,
         int pageNumber = 1,
-        int pageSize = 2,
+        int pageSize = 5,
         CancellationToken cancellationToken = default)
         {
             return await FilterPosts(postQuery).ToPagedListAsync(

@@ -4,7 +4,10 @@ using TatBlog.WebApp.Mapsters;
 
 var builder = WebApplication.CreateBuilder(args);
 {
-    builder.ConfigureMvc().ConfigureServices().ConfigureMapster();
+    builder
+        .ConfigureMvc()
+        .ConfigureServices()
+        .ConfigureMapster();
 }
 var app = builder.Build();
 {
