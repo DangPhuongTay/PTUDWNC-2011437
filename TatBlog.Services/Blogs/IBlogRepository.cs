@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TatBlog.Core.Entities;
 using TatBlog.Core.DTO;
 using TatBlog.Core.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace TatBlog.Services.Blogs
 {
@@ -24,7 +25,14 @@ namespace TatBlog.Services.Blogs
         Task<bool> IsPostSlugExistedAsync(
             int postId, string slug,
             CancellationToken cancellationToken = default);
-
+        Task<Category> GetCategoryAsync(
+             string slug, CancellationToken cancellationToken = default);
+        Task<IList<AuthorItem>> GetAuthorsAsync(CancellationToken cancellationToken = default);
+        Task<IList<CategoryItem>> GetCategoriesAsync(
+       bool showOnMenu = false,
+       CancellationToken cancellationToken = default);
+        Task<Author> GetAuthorAsync(string slug, CancellationToken cancellationToken = default);
+        
         Task IncreaseViewCountAsync(
             int postId,
             CancellationToken cancellationToken);
@@ -42,11 +50,15 @@ namespace TatBlog.Services.Blogs
         Task<IPagedList<Post>> GetPagedPostsAsync(
         PostQuery postQuery,
         int pageNumber = 1,
-        int pageSize = 10,
+        int pageSize = 5,
         CancellationToken cancellationToken = default);
         Task<Post> GetPostByIdAsync(
-           int postId,
+           int postId, bool includeDetails = false,
            CancellationToken cancellationToken = default);
-     
+        Task<Post> CreateOrUpdatePostAsync(
+          Post post, IEnumerable<string> tags,
+      CancellationToken cancellationToken = default);
+
+
     }
 }

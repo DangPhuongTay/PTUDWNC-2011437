@@ -64,7 +64,7 @@ namespace TatBlog.WebApp.Areas.Admin.Models
         {
             return (SelectedTags ?? "")
                 .Split(new[] { ',', ';', '\r', '\n' },
-                StringSplitOptions.RemoveEmptyEntries)
+                 StringSplitOptions.RemoveEmptyEntries)
                 .ToList();
         }
     }
