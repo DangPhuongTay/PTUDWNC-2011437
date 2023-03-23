@@ -59,8 +59,9 @@ namespace TatBlog.Services.Blogs
 
      
         Task<IPagedList<T>> GetPostByQueryAsync<T>(PostQuery query, IPagingParams pagingParams, Func<IQueryable<Post>, IQueryable<T>> mapper, CancellationToken cancellationToken = default);
+        Task<IList<Post>> GetFeaturedAsync(int numPosts, CancellationToken cancellationToken = default);
 
-       
+
     }
 
 

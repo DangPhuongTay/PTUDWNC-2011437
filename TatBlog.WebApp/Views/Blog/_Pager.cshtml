@@ -24,31 +24,33 @@
     <div class="text-center my-4">
         @if (Model.HasPreviousPage)
         {
-            <a asp-controller="Blog"
+            <a asp-area=""
+                asp-controller="Blog"
          asp-action="@actionName"
         asp-route-slug="@slug"
         asp-route-k="@postQuery.KeyWord"
         asp-route-p="@(Model.PageNumber - 1)"
         asp-route-ps="@Model.PageSize"
-               class="btn btn-info">
+               class="btn btn-light">
                 <i class="fa fa-arrow-left"></i>
-                Trang trước>
+                Trang trước
             </a>
         }
         else
         {
             <button type="button"
-                    class="btn btn-outline-secondary" disabled>
+                    class="btn btn-outline-primary" disabled>
                 <i class="fa fa-arrow-left"></i>
                 Trang trước
             </button>
         }
         @if(Model.HasNextPage)
         {
-            <a asp-controller="Blog" asp-action="@actionName"
+            <a asp-area=""
+                asp-controller="Blog" asp-action="@actionName"
        asp-route-slug="@slug"
        asp-route-k="@postQuery.KeyWord" asp-route-p="@(Model.PageNumber + 1)"
-       asp-route-ps="@Model.PageSize" class="btn btn-info">
+       asp-route-ps="@Model.PageSize" class="btn btn-light">
                 Trang sau
                 <i class="fa fa-arrow-right"></i>
             </a>
@@ -56,7 +58,7 @@
         else
         {
             <button type="button"
-                    class="btn btn-outline-secondary" disabled>
+                    class="btn btn-outline-primary" disabled>
                 Trang sau
                 <i class="fa fa-arrow-right"></i>
             </button>

@@ -52,18 +52,15 @@ namespace TatBlog.Services.Blogs
             return await postsQuery.FirstOrDefaultAsync(cancellationToken);
         }
 
-        //    public async Task<IList<Post>> GetPopularArticlesAsync(
-        //        int numPost,
-        //        CancellationToken cancellationToken = default)
-        //    {
-        //        return await _context.Set<Post>()
-        //            .Include(x => x.Author)
-        //            .Include(x => x.Category)
-        //            .OrderByDescending(x => x.ViewCount)
-        //            .Take(numPost)
-        //            .ToListAsync(cancellationToken);
-        //    }
-
+        public async Task<IList<Post>> GetFeaturedAsync(int numPosts, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Post>()
+                                     .Include(x => x.Author)
+                                     .Include(x => x.Category)
+                                     .OrderByDescending(p => p.ViewCount)
+                                     .Take(numPosts)
+                                     .ToListAsync(cancellationToken);
+        }
         //    public async Task<bool> IsPostSlugExistedAsync(
         //        int postId, string slug,
         //        CancellationToken cancellationToken = default)

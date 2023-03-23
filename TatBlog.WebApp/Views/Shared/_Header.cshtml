@@ -20,48 +20,44 @@ bg-white border-bottom box-shadow">
          <div class="navbar-collapse collapse
          d-sm-inline-flex
          justiify-context-between">
-         <ul class="navbar-nav flex-grow-1">
-             <li class="nav-item">
-                 <a class="nav-link text-dark"
-                 asp-are=""
-                 asp-controller="Blog"
-                 asp-action="Index">
-             Trang chủ
-             </a>
-                 
-             </li>
+                <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                         <a class="nav-link text-dark"
-                           asp-are=""
+                           asp-area=""
+                           asp-controller="Blog"
+                           asp-action="Index">
+                            Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"
+                           asp-area=""
                            asp-controller="Blog"
                            asp-action="Contact"
-                            title="Xem thông tin liên lạc và góp ý">
-                            Liên hệ
+                           title="Xem thông tin liên lạc và góp ý">
+                            Liên lạc
                         </a>
-
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark"
-                           asp-are=""
+                           asp-area=""
                            asp-controller="Blog"
                            asp-action="About"
-                           title="Xem thông tin TAT Blog">
+                           title="Thông tin về TAT Blog">
                             Giới thiệu
                         </a>
-
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark"
-                           asp-are=""
+                           asp-area=""
                            asp-controller="Blog"
                            asp-action="Rss"
-                        title="Tải danh sách bài viết mới">
-                           RSS Feed
+                           title="Tải danh sách bài viết mới">
+                            RSS Feed
                         </a>
-
                     </li>
-                 
-         </ul>
+                </ul>
+               
      </div>
     </div>
 </nav>

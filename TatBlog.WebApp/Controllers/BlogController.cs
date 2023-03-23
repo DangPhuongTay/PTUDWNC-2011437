@@ -63,19 +63,38 @@ namespace TatBlog.WebApp.Controllers
             return View(post);
         }
 
-        public async Task<IActionResult> Archives(int year, int month)
+        
+        public async Task<IActionResult> Category(
+                           string slug = null)
         {
-            PostQuery query = new PostQuery
+            if (slug == null) return NotFound();
+
+            var postQuery = new PostQuery
             {
-                Year = year,
-                Month = month
+                CategorySlug = slug
             };
 
-            var posts = await _blogRepository.GetPostByQueryAsync(query);
-
-            ViewData["PostQuery"] = query;
+            var posts = await _blogRepository.GetPostByQueryAsync(postQuery);
 
             return View(posts);
         }
+        public async Task<IActionResult> Tag(
+                          string slug = null)
+        {
+            if (slug == null) return NotFound();
+
+            var postQuery = new PostQuery
+            {
+                TagSlug = slug
+            };
+
+            var posts = await _blogRepository.GetPostByQueryAsync(postQuery);
+            var tag = await _blogRepository.GetTagBySlugAsync(slug);
+
+            ViewData["Tag"] = tag;
+
+            return View(posts);
+        }
+
     }
 }
