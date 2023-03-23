@@ -1,54 +1,25 @@
-﻿@{
-    ViewData["PageTitle"] = "Tác giả";
+﻿@model IPagedList<Post>
 
+@{
+    ViewData["Title"] = "Tác giả";
+
+    var author = new Author();
+    if (Model != null && Model.Count > 0)
+        author = (Model[0].Author as Author);
 }
-@model Author
-<h1>
-    Tác giả
-</h1>
-@*@{
-    var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl)
-            ? "/images/author_1.jpg"
-            : $"/{Model.ImageUrl}";
-}*@
-<article class="blog-entry mb-4">
-    <div class="card">
-        <div class="row g-0">
-           @* <div class="col-md-4">
-                <img src="@imageUrl"
-                     class="card-img" />
-            </div>*@
-            <div class="col-md-8">
-                <div class="card-body">
 
-                    <p class="card-text">
-                        <small class="text-muted">
-                            Tác giả:
-                        </small>
-                        <span class="text-primary">
-                            @Model.FullName
-                        </span>
-                        <small class="text-muted">
-                            Năm sinh:
-                        </small>
-                        <span class="text-primary">
-                            @Model.JoinedDate
-                        </span>
-                        <small class="text-muted">
-                            Email:
-                        </small>
-                        <span class="text-primary">
-                            @Model.Email
-                        </span>
-                        <small class="text-muted">
-                            Ghi chú:
-                        </small>
-                        <span class="text-primary">
-                            @Model.Notes
-                        </span>
+<div class="p-4">
+    @if (!string.IsNullOrWhiteSpace(author.FullName))
+    {
+        <h3 class="text-primary mb-3">
+            Những bài viết thuộc tác giả '@author.FullName'
+        </h3>
+    }
 
-                </div>
-            </div>
-        </div>
-    </div>
-</article>
+    @foreach (var postItem in Model)
+    {
+        <partial name="_PostItem" model="postItem" />
+    }
+
+    <partial name="_Pager" model="@Model" />
+</div>

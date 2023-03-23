@@ -16,6 +16,6 @@ namespace TatBlog.Services.Media
         Task<bool> DeleteFileAsync(
             string filePath,
             CancellationToken cancellationToken = default);
-        
+
     }
 }

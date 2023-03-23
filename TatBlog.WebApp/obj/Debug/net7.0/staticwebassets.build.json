@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jvhoJ42qXf9XHYymIhoCnsk1DJFcHN7yTFQx1gD084M=",
+  "Hash": "llmUMBQCGazrxyNrwwiLH0o6u3IP61xSIUwJDd/tkog=",
   "Source": "TatBlog.WebApp",
   "BasePath": "_content/TatBlog.WebApp",
   "Mode": "Default",
@@ -32,40 +32,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\main.css"
-    },
-    {
-      "Identity": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\adapter_1.png",
-      "SourceId": "TatBlog.WebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\",
-      "BasePath": "_content/TatBlog.WebApp",
-      "RelativePath": "images/adapter_1.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\adapter_1.png"
-    },
-    {
-      "Identity": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\adapter_2.webp",
-      "SourceId": "TatBlog.WebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\",
-      "BasePath": "_content/TatBlog.WebApp",
-      "RelativePath": "images/adapter_2.webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\adapter_2.webp"
     },
     {
       "Identity": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\authors_1.jpg",

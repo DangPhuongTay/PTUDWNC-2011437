@@ -1,4 +1,6 @@
-﻿using MapsterMapper;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using MapsterMapper;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -29,27 +31,18 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         //    return View(model);
         //}
         private readonly IBlogRepository _blogRepository;
+        private readonly ILogger<PostsController> _logger;
         private readonly IMediaManager _mediaManager;
         
         private readonly IMapper _mapper;
-        public PostsController(IBlogRepository blogRepository,IMediaManager mediaManager, IMapper mapper)
+        public PostsController(ILogger<PostsController> logger ,IBlogRepository blogRepository,IMediaManager mediaManager, IMapper mapper)
         {
+            _logger = logger;
             _blogRepository = blogRepository;
             _mediaManager = mediaManager;
             _mapper = mapper;
         }
-        public async Task<IActionResult> Index(PostFilterModel model)
-        {
-            var postQuery = _mapper.Map<PostQuery>(model);
-
-            ViewBag.PostsList = await _blogRepository
-
-                .GetPagedPostsAsync(postQuery, 1, 5);
-
-            await PopulatePostFilterModelAsync(model);
-
-            return View(model);
-        }
+        
         private async Task PopulatePostFilterModelAsync(PostFilterModel model)
         {
             var authors = await _blogRepository.GetAuthorsAsync();
@@ -98,8 +91,13 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(PostEditModel model)
+        public async Task<IActionResult> Edit([FromServices] IValidator<PostEditModel> PostValidator, PostEditModel model)
         {
+            var validationResult = await PostValidator.ValidateAsync(model);
+            if (!validationResult.IsValid)
+            {
+                validationResult.AddToModelState(ModelState);
+            }
             if (!ModelState.IsValid)
             {
                 await PopulatePostEditModelAsync(model);
@@ -153,6 +151,15 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
                     ? Json($"Slug '{urlSlug}' đã được sử dụng")
                     : Json(true);
         }
-
+        public async Task<IActionResult> Index(PostFilterModel model)
+        {
+            _logger.LogInformation("Tạo điều kiện truy vấn");
+            var postQuery = _mapper.Map<PostQuery>(model);
+            _logger.LogInformation("lấy danh sách bài viết từ CSDL");
+            ViewBag.PostsList = await _blogRepository.GetPagedPostsAsync(postQuery,1,5);
+            _logger.LogInformation("Chuẩn bị dữ liệu cho ViewModel");
+            await PopulatePostFilterModelAsync(model);
+            return View(model);
+        }
     }
 }

@@ -107,11 +107,11 @@
             <label asp-for="ImageUrl"
                    class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <img src="/@Model.ImageUrl /">
+                <img src="/@Model.ImageUrl" />
             </div>
         </div>
-    }
-
+   }
+  
     <div class="row mb-3">
         <label asp-for="ImageFile"
                class="col-sm-2 col-form-label"></label>
@@ -146,13 +146,19 @@
 @section scripts
     {
     <partial name="_ValidationScriptsPartial" />
-    <script src="~/lib/speakingurl//speakingurl.min.js"></script>
+    <script src="~/lib/speakingurl/speakingurl.min.js"></script>
     <script >
-        $(function(){
-            $('#Title'.change(function()){
+        $(function()
+        {
+            $('#Title'.change(
+                function()
+                {
                 var slug = getSlug(this.value);
                 $('#UrlSlug').val(slug).trigger('blur');
-            });
-        });
+            }
+            )
+            );
+        }
+        );
     </script>
 }

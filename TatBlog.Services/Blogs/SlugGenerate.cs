@@ -14,7 +14,7 @@ namespace TatBlog.Services.Blogs
         
         public static string GenerateSlug(this string str1)
         {
-            string str = RemoveAccent(str1).ToLower();
+            string str =str1.RemoveAccent().ToLower();
             // invalid chars           
             str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
             // convert multiple spaces into one space   

@@ -32,6 +32,7 @@
                 defaults: new { area = "Admin" });
 
 
+
             endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Blog}/{action=Index}/{id?}");

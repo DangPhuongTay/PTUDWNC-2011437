@@ -5,14 +5,6 @@
       "PackagePath": "staticwebassets\\css\\main.css"
     },
     {
-      "Id": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\adapter_1.png",
-      "PackagePath": "staticwebassets\\images\\adapter_1.png"
-    },
-    {
-      "Id": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\adapter_2.webp",
-      "PackagePath": "staticwebassets\\images\\adapter_2.webp"
-    },
-    {
       "Id": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\authors_1.jpg",
       "PackagePath": "staticwebassets\\images\\authors_1.jpg"
     },

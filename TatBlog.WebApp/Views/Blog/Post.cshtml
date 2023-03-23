@@ -1,0 +1,72 @@
+﻿@model Post
+
+@{
+    ViewData["Title"] = "Chi tiết bài viết";
+    var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl) ? "/images/image_1.jpg" : $"/{Model.ImageUrl}";
+
+   
+}
+
+<div class="text-danger">@Html.ValidationMessage("denied access")</div>
+
+<div class="p-4 mb-5">
+    <h3>Tiêu đề: @Model.Title</h3>
+    <p>Ngày tạo: <i>@Html.DisplayFor(model => model.PostedDate)</i></p>
+    <img style="max-height:400px;object-fit:cover;" src="@imageUrl" alt="@Model.Title" class="img-thumbnail">
+    <hr>
+    <p>
+        <h6>
+            Giới thiệu bài viết:
+        </h6>
+        @Html.Raw(Model.ShortDescription)
+    </p>
+    <p>
+        <h6>
+            Mô tả bài viết:
+        </h6>
+        @Html.Raw(Model.Description)
+    </p>
+    <h6>
+        Lượt xem: <text class="text-dark">@Model.ViewCount</text>
+    </h6>
+    <h6>
+        Tác giả: <text class="text-dark">@Model.Author.FullName</text>
+    </h6>
+    <h6>
+        Chủ đề: <text class="text-dark" ">@Model.Category.Name</text>
+    </h6>
+    <h6>
+        Thẻ:
+        @foreach (var tag in Model.Tags)
+        {
+            <text>
+                <text class="text-dark">@tag.Name</text>
+            </text>
+        }
+        </h6>
+    <div class="card-footer py-3 border-0"">
+        <div class="d-flex flex-start w-100">
+            <label class="form-label w-20" style="min-width:150px;" for="textAreaExample">Tên bạn</label>
+            <div class="form-outline w-100">
+                <textarea class="form-control" id="textAreaExample" rows="1"
+                          style="background: #fff;"></textarea>
+                
+            </div>
+        </div>
+        <div class="d-flex flex-start w-100">
+            <label class="form-label w-20" style="min-width:150px;" for="textAreaExample">Bình luận</label>
+            <div class="form-outline w-100">
+                <textarea class="form-control" id="textAreaExample" rows="4"
+                          style="background: #fff;"></textarea>
+
+            </div>
+        </div>
+        <div class="float-end mt-2 pt-1">
+            <button type="button" class="btn btn-primary btn-sm">Đăng bình luận</button>
+            <button type="button" class="btn btn-outline-primary btn-sm">Đóng</button>
+        </div>
+    </div>
+</div>
+
+
+

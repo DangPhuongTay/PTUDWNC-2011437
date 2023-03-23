@@ -12,12 +12,7 @@ namespace TatBlog.Services.Blogs
 {
     public interface IBlogRepository
     {
-        Task<Post> GetPostAsync(
-            int year,
-            int month,
-            string slug,
-            CancellationToken cancellationToken = default);
-
+        Task<Post> GetPostAsync(int year, int month, int day, string slug, CancellationToken cancellationToken = default);
         Task<IList<Post>> GetPopularArticlesAsync(
             int numPost,
             CancellationToken cancellationToken = default);
@@ -50,7 +45,7 @@ namespace TatBlog.Services.Blogs
         Task<IPagedList<Post>> GetPagedPostsAsync(
         PostQuery postQuery,
         int pageNumber = 1,
-        int pageSize = 5,
+        int pageSize = 2,
         CancellationToken cancellationToken = default);
         Task<Post> GetPostByIdAsync(
            int postId, bool includeDetails = false,
@@ -58,7 +53,16 @@ namespace TatBlog.Services.Blogs
         Task<Post> CreateOrUpdatePostAsync(
           Post post, IEnumerable<string> tags,
       CancellationToken cancellationToken = default);
+        Task<IPagedList<Post>> GetPostByQueryAsync(PostQuery query, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default);
 
+        Task<IPagedList<Post>> GetPostByQueryAsync(PostQuery query, IPagingParams pagingParams, CancellationToken cancellationToken = default);
 
+     
+        Task<IPagedList<T>> GetPostByQueryAsync<T>(PostQuery query, IPagingParams pagingParams, Func<IQueryable<Post>, IQueryable<T>> mapper, CancellationToken cancellationToken = default);
+
+       
     }
+
+
+
 }
