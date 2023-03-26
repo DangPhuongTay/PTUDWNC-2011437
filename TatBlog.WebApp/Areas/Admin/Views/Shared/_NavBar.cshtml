@@ -73,7 +73,28 @@ bg-white border-bottom box-shadow">
 
                     </li>
                 </ul>
+                <div>
+                    <form asp-area=""
+                          asp-controller="Blog"
+                          asp-action="Index"
+                          method="get">
+                        <div class="input-group mb-3">
+                            <input type="text"
+                                   class="form-control"
+                                   name="k"
+                                   placeholder="Enter keyword"
+                                   aria-label="Enter keyword"
+                                   aria-describedby="btnSearchPost">
+                            <button class="btn btn-outline-secondary" type="button"
+                                    id="btnSearchPost">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
+
+            
         </div>
     </nav>
 </header>
