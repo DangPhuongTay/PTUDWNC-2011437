@@ -20,8 +20,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aG9yc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Areas/Admin/Views/Authors/_AuthorFilterPane.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aG9yc1xfQXV0aG9yRmlsdGVyUGFuZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Areas/Admin/Views/Categories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Areas/Admin/Views/Categories/_CategoryFilterPane.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xfQ2F0ZWdvcnlGaWx0ZXJQYW5lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/GIGABYTE/Documents/GitHub/PTUDWNC-2011437/TatBlog.WebApp/Areas/Admin/Views/Comments/Index.cshtml]

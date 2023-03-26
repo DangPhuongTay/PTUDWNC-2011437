@@ -23,6 +23,7 @@ namespace TatBlog.Services.Blogs
         Task<Category> GetCategoryAsync(
              string slug, CancellationToken cancellationToken = default);
         Task<IList<AuthorItem>> GetAuthorsAsync(CancellationToken cancellationToken = default);
+        Task<IPagedList<Category>> GetCategoryByQueryAsync(CategoryQuery query, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default);
         Task<IList<CategoryItem>> GetCategoriesAsync(
        bool showOnMenu = false,
        CancellationToken cancellationToken = default);
@@ -42,6 +43,10 @@ namespace TatBlog.Services.Blogs
         public Task<Tag> GetTagBySlugAsync(
             string slug,
             CancellationToken cancellationToken = default);
+        Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(
+        int pageNumber = 1,
+       int pageSize = 10,
+       CancellationToken cancellationToken = default);
         Task<IPagedList<Post>> GetPagedPostsAsync(
         PostQuery postQuery,
         int pageNumber = 1,

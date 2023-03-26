@@ -1,6 +1,116 @@
 ﻿@{
-    ViewData["PageTitle"] = "Danh sách chủ đề";
+    ViewData["Title"] = "Các chuyên mục";
+    var categoriesList = ViewData["CategoriesList"] as IPagedList<Category>;
+    var pagerQuery = (ViewData["PagerQuery"] as PagerQuery) ?? new PagerQuery();
 }
+
 <h1>
     Danh sách chủ đề
 </h1>
+
+<partial name="_CategoryFilterPane" model="Model" />
+
+@if (categoriesList?.Count > 0)
+{
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>Tên chủ đề</th>
+                <th>Slug</th>
+                <th>Hiển thị trên Menu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in categoriesList)
+            {
+                <tr>
+                    <td>
+                        
+                            @category.Name
+                        
+                        <p class="text-muted">
+                            @category.Description
+                        </p>
+                    </td>
+                    <td>
+                        @category.UrlSlug
+                    </td>
+                    <td>
+                        <form method="post"
+                              enctype="multipart/form-data"
+                      asp-area="Admin"
+                      asp-controller="Categories"
+                      asp-action="ShowedChanged">
+                            <input type="hidden" name="categoryId" value="@category.Id" />
+                            <select class="form-select" onchange="this.form.submit()">
+                                <option value="" selected="@(category.ShowMenu ? true : false)">Hiển thị</option>
+                                <option value="" selected="@(category.ShowMenu ? false : true)">Ẩn</option>
+                            </select>
+                        </form>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <button type="button" value="@category.Id" class="btn btn-danger" data-bs-target="#deleteModal" data-bs-toggle="modal">
+                                Xóa
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    
+}
+else
+{
+    <h1 class="text-danger">
+        Không tìm thấy chủ đề nào
+    </h1>
+}
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Xóa chủ đề</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa chủ đề này?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" id="btn-delete-category" class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="post"
+      name="delete-category-form"
+      enctype="multipart/form-data"
+      asp-area="Admin"
+      asp-controller="Categories"
+      asp-action="DeleteCategory">
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var categoryId;
+        var deleteForm = document.forms['delete-category-form'];
+        var btnDeleteCategory = document.getElementById('btn-delete-category');
+        // When dialog confirm clicked
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            categoryId = button.val();
+        });
+
+        // When delete category btn clicked
+        btnDeleteCategory.onclick = function () {
+            deleteForm.action += "/" + categoryId;
+            deleteForm.submit();
+        }
+    });
+</script>

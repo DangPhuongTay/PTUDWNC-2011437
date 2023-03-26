@@ -483,11 +483,9 @@ namespace TatBlog.Services.Blogs
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(
-            IPagingParams pagingParams,
-            CancellationToken cancellationToken = default)
+        public async Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default)
         {
-            var tagQuery = _context.Set<Category>()
+            var categoriesQuery = _context.Set<Category>()
                 .Select(x => new CategoryItem()
                 {
                     Id = x.Id,
@@ -497,10 +495,44 @@ namespace TatBlog.Services.Blogs
                     ShowOnMenu = x.ShowMenu,
                     PostCount = x.Posts.Count(p => p.Published)
                 });
-
-            return await tagQuery.ToPagedListAsync(pagingParams, cancellationToken);
+            return await categoriesQuery.ToPagedListAsync(
+                pageNumber, pageSize,
+                nameof(Category.Name), "DESC",
+                cancellationToken);
         }
+        public async Task<IPagedList<Category>> GetCategoryByQueryAsync(CategoryQuery query, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default)
+        {
+            return await FilterCategories(query).ToPagedListAsync(
+                                    pageNumber,
+                                    pageSize,
+                                    nameof(Category.Name),
+                                    "DESC",
+                                    cancellationToken);
+        }
+        private IQueryable<Category> FilterCategories(CategoryQuery query)
+        {
+            IQueryable<Category> categoryQuery = _context.Set<Category>()
+                                                      .Include(c => c.Posts);
 
+            if (query.ShowOnMenu)
+            {
+                categoryQuery = categoryQuery.Where(x => x.ShowMenu);
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.UrlSlug))
+            {
+                categoryQuery = categoryQuery.Where(x => x.UrlSlug == query.UrlSlug);
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.Keyword))
+            {
+                categoryQuery = categoryQuery.Where(x => x.Name.Contains(query.Keyword) ||
+                             x.Description.Contains(query.Keyword) ||
+                             x.Posts.Any(p => p.Title.Contains(query.Keyword)));
+            }
+
+            return categoryQuery;
+        }
         public async Task<Category> CreateOrUpdateCategoryAsync(
             Category category, CancellationToken cancellationToken = default)
         {
