@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oH/VsL7vQHEu7T0B3uIHzZnHV0IaxZ8LxH3WQCrAqBw=",
+  "Hash": "g0dRuNUyMUbyh9zSqXaRh5LD+Uih90mTA1uQLMf4dsI=",
   "Source": "TatBlog.WebApp",
   "BasePath": "_content/TatBlog.WebApp",
   "Mode": "Default",
@@ -66,6 +66,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\authors_1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\cafedev-iteratorpattern1.png",
+      "SourceId": "TatBlog.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\",
+      "BasePath": "_content/TatBlog.WebApp",
+      "RelativePath": "images/cafedev-iteratorpattern1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cafedev-iteratorpattern1.png"
+    },
+    {
+      "Identity": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\cafedev-NotificationIterator2.png",
+      "SourceId": "TatBlog.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\",
+      "BasePath": "_content/TatBlog.WebApp",
+      "RelativePath": "images/cafedev-NotificationIterator2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cafedev-NotificationIterator2.png"
     },
     {
       "Identity": "C:\\Users\\GIGABYTE\\Documents\\GitHub\\PTUDWNC-2011437\\TatBlog.WebApp\\wwwroot\\images\\image_1.jpg",
