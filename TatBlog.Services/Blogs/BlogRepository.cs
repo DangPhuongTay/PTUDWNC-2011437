@@ -11,12 +11,14 @@ using TatBlog.Data.Contexts;
 using TatBlog.Services.Extentions;
 using TatBlog.Core.Contracts;
 using System.Text.RegularExpressions;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace TatBlog.Services.Blogs
 {
     public class BlogRepository : IBlogRepository
     {
         private readonly BlogDbContext _context;
+        private readonly IMemoryCache _memoryCache;
 
         public BlogRepository(BlogDbContext context)
         {
@@ -99,6 +101,16 @@ namespace TatBlog.Services.Blogs
                     PostCount = x.Posts.Count(p => p.Published)
                 })
                 .ToListAsync(cancellationToken);
+        }
+        public async Task<Post> GetCachedPostByIdAsync(int id, bool published = false, CancellationToken cancellationToken = default)
+        {
+            return await _memoryCache.GetOrCreateAsync(
+                $"post.by-id.{id}-{published}",
+                async (entry) =>
+                {
+                    entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30);
+                    return await GetPostByIdAsync(id, published, cancellationToken);
+                });
         }
         //public async Task<IList<AuthorItem>> GetAuthorItemsAsync(
         //    CancellationToken cancellationToken = default)

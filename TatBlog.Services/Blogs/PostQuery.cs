@@ -19,6 +19,7 @@ namespace TatBlog.Services.Blogs
         public bool PublishedOnly { get; set; }
         public bool NotPublished { get; set; }
         public string Tag { get; set; }
+        public string PostSlug { get; set; }
         public string KeyWord { get; set; }
     }
 }

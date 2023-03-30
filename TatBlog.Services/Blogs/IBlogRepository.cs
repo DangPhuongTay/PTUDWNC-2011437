@@ -69,7 +69,7 @@ namespace TatBlog.Services.Blogs
         PostQuery condition,
         IPagingParams pagingParams,
         Func<IQueryable<Post>, IQueryable<T>> mapper);
-
+        Task<Post> GetCachedPostByIdAsync(int id, bool published = false, CancellationToken cancellationToken = default);
     }
 
 

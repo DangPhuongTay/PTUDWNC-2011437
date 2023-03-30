@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\" />
     <Folder Include="wwwroot\uploads\pictures\" />
   </ItemGroup>
 
