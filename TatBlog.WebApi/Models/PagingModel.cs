@@ -9,5 +9,6 @@ namespace TatBlog.WebApi.Models
         public string SortColumn { get; set; } = "Id";
         public string SortOrder { get; set; } = "DESC";
 
+        
     }
 }
