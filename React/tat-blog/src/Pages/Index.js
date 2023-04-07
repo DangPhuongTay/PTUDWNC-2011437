@@ -20,6 +20,7 @@ const Index = () => {
 
   useEffect(() => {
     document.title = "Trang chủ";
+
     getPosts(k, ps, p).then((data) => {
       if (data) {
         console.log(data);
@@ -42,7 +43,8 @@ const Index = () => {
         <Pager postquery={{ keyword: k }} metadata={metadata} />
       </div>
     );
-  else return <></>;
+  else return (<>
+  </>);
 };
 
 export default Index;

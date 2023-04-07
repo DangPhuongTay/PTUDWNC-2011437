@@ -3,60 +3,35 @@ using TatBlog.WebApi.Models;
 
 namespace TatBlog.WebApi.Validations
 {
-    public class PostValidator : AbstractValidator<PostEditModel>
+    public class AuthorValidator : AbstractValidator<AuthorEditModel>
     {
-        public PostValidator() {
-            RuleFor(p => p.Title)
-     .NotEmpty()
-     .WithMessage("Tiêu đề của bài viết không được để trống")
-     .MaximumLength(500)
-     .WithMessage("Tiêu đề dài tối đa '{MaxLength}'");
-
-            RuleFor(p => p.ShortDescription)
-            .NotEmpty()
-            .WithMessage("Giới thiệu về bài viết không được để trống");
-
-            RuleFor(p => p.Description)
-            .NotEmpty()
-            .WithMessage("Mô tả về bài viết không được để trống");
-
-            RuleFor(p => p.Meta)
-            .NotEmpty()
-            .WithMessage("Meta của bài viết không được để trống")
-            .MaximumLength(1000)
-            .WithMessage("Meta dài tối đa '{MaxLength}'");
-
-            RuleFor(p => p.UrlSlug)
-            .NotEmpty()
-            .WithMessage("Slug của bài viết không được để trống")
-            .MaximumLength(1000)
-            .WithMessage("Slug dài tối đa '{MaxLength}'");
-
-            RuleFor(p => p.UrlSlug)
-            .NotEmpty()
-            .WithMessage("Slug của bài viết không được để trống")
-            .MaximumLength(1000)
-            .WithMessage("Slug dài bài viết '{MaxLength}' kí tự");
-
-            RuleFor(p => p.CategoryId)
-            .NotEmpty()
-            .WithMessage("Bạn phải chọn chủ đề cho bài viết");
-
-            RuleFor(p => p.AuthorId)
-            .NotEmpty()
-            .WithMessage("Bạn phải chọn tác giả của bài viết");
-
-            RuleFor(p => p.SelectedTags)
-            .Must(HasAtLeastOneTag)
-            .WithMessage("bạn phải nhập ít nhất một thẻ");
-        }
-
-        // Kiểm tra xem người dùng đã nhập ít nhất 1 thẻ (tag)
-        private bool HasAtLeastOneTag(PostEditModel postModel, string selectedTags)
+        public AuthorValidator()
         {
-            return postModel.GetSelectedTags().Any();
-        }
+            RuleFor(a => a.FullName)
+                .NotEmpty()
+                .WithMessage("Tên tác giả không được để trống")
+                .MaximumLength(100)
+                .WithMessage("Tên tác giả tối đa 100 ký tự");
 
+            RuleFor(a => a.UrlSlug)
+                .NotEmpty()
+                .WithMessage("UrlSlug không được để trống")
+                .MaximumLength(100)
+                .WithMessage("UrlSluf tối đa 100 ký tự");
+
+            RuleFor(a => a.JoinedDate)
+                .GreaterThan(DateTime.MinValue)
+                .WithMessage("Ngày tham gia không hợp lệ");
+
+            RuleFor(a => a.Email)
+                .NotEmpty()
+                .WithMessage("Email không được để trống")
+                .MaximumLength(100)
+                .WithMessage("Email chứa tối đa 100 ký tự");
+
+            RuleFor(a => a.Notes)
+                .MaximumLength(500)
+                .WithMessage("Ghi chú tối đa 500 ký tự");
+        }
     }
-    
 }

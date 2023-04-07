@@ -20,7 +20,7 @@ public static class CategoryEndpoints
         // Nested Map with defined specific route
         routeGroupBuilder.MapGet("/", GetCategories)
                          .WithName("GetCategories")
-                         .Produces<ApiResponse<PaginationResult<CategoryItem>>>();
+                         .Produces<ApiResponse<CategoryItem>>();
 
         routeGroupBuilder.MapGet("/{id:int}", GetCategoryDetails)
                          .WithName("GetCategoryById")
@@ -51,16 +51,13 @@ public static class CategoryEndpoints
         return app;
     }
 
-    private static async Task<IResult> GetCategories([AsParameters] CategoryFilterModel model, ICategoryRepository categoryRepository, IMapper mapper)
+    private static async Task<IResult> GetCategories(ICategoryRepository categoryRepository, IMapper mapper)
     {
-        var categoryQuery = mapper.Map<CategoryQuery>(model);
-        var categoryList = await categoryRepository.GetCategoryByQueryAsync(categoryQuery, model, category => category.ProjectToType<CategoryItem>());
+        var categoryList = await categoryRepository.GetCategoriesAsync();
 
-        var paginationResult = new PaginationResult<CategoryItem>(categoryList);
 
-        return Results.Ok(paginationResult);
+        return Results.Ok(ApiResponse.Success(categoryList));
     }
-
     private static async Task<IResult> GetCategoryDetails(int id, ICategoryRepository categoryRepository, IMapper mapper)
     {
         var category = await categoryRepository.GetCachedCategoryByIdAsync(id);

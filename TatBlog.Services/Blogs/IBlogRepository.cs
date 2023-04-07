@@ -61,8 +61,9 @@ namespace TatBlog.Services.Blogs
         Task<IPagedList<Post>> GetPostByQueryAsync(PostQuery query, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default);
 
         Task<IPagedList<Post>> GetPostByQueryAsync(PostQuery query, IPagingParams pagingParams, CancellationToken cancellationToken = default);
+        Task<IList<Tag>> GetTagListAsync(CancellationToken cancellationToken = default);
 
-     
+
         Task<IPagedList<T>> GetPostByQueryAsync<T>(PostQuery query, IPagingParams pagingParams, Func<IQueryable<Post>, IQueryable<T>> mapper, CancellationToken cancellationToken = default);
         Task<IList<Post>> GetFeaturedAsync(int numPosts, CancellationToken cancellationToken = default);
         Task<IPagedList<T>> GetPagedPostsAsync<T>(
@@ -70,6 +71,7 @@ namespace TatBlog.Services.Blogs
         IPagingParams pagingParams,
         Func<IQueryable<Post>, IQueryable<T>> mapper);
         Task<Post> GetCachedPostByIdAsync(int id, bool published = false, CancellationToken cancellationToken = default);
+        Task<IList<Post>> GetRandomPostsAsync(int n, CancellationToken cancellationToken = default);
     }
 
 
