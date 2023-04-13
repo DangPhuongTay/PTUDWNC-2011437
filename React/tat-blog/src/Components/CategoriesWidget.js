@@ -27,7 +27,7 @@ const CategoriesWidget = () => {
                   key={index}
                 >
                   {item.name}
-                  {/* <span>&nbsp;({item.postCount})</span> */}
+                  <span>&nbsp;({item.postCount})</span>
                 </Link>
               </ListGroup.Item>
             );

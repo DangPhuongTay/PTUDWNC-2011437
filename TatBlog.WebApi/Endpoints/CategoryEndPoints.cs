@@ -15,12 +15,10 @@ public static class CategoryEndpoints
 {
     public static WebApplication MapCategoryEndpoints(this WebApplication app)
     {
-        var routeGroupBuilder = app.MapGroup("/api/categories");
-
-        // Nested Map with defined specific route
+        var routeGroupBuilder = app.MapGroup("/api/categories"); 
         routeGroupBuilder.MapGet("/", GetCategories)
-                         .WithName("GetCategories")
-                         .Produces<ApiResponse<CategoryItem>>();
+                        .WithName("GetCategories")
+                        .Produces<ApiResponse<PaginationResult<CategoryItem>>>();
 
         routeGroupBuilder.MapGet("/{id:int}", GetCategoryDetails)
                          .WithName("GetCategoryById")
@@ -51,12 +49,11 @@ public static class CategoryEndpoints
         return app;
     }
 
-    private static async Task<IResult> GetCategories(ICategoryRepository categoryRepository, IMapper mapper)
+    private static async Task<IResult> GetCategories(
+        IBlogRepository blogRepository)
     {
-        var categoryList = await categoryRepository.GetCategoriesAsync();
-
-
-        return Results.Ok(ApiResponse.Success(categoryList));
+        var categories = await blogRepository.GetCategoriesAsync();
+        return Results.Ok(ApiResponse.Success(categories));
     }
     private static async Task<IResult> GetCategoryDetails(int id, ICategoryRepository categoryRepository, IMapper mapper)
     {

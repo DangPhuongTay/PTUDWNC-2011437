@@ -73,46 +73,46 @@ public class AuthorRepository : IAuthorRepository
 			.ToListAsync(cancellationToken);
 	}
 
-	public async Task<IPagedList<AuthorItem>> GetPagedAuthorsAsync(
-		IPagingParams pagingParams,
-		string name = null,
-		CancellationToken cancellationToken = default)
-	{
-		return await _context.Set<Author>()
-			.AsNoTracking()
-			.WhereIf(!string.IsNullOrWhiteSpace(name), 
-				x => x.FullName.Contains(name))
-			.Select(a => new AuthorItem()
-			{
-				Id = a.Id,
-				FullName = a.FullName,
-				Email = a.Email,
-				JoinedDate = a.JoinedDate,
-				ImageUrl = a.ImageUrl,
-				UrlSlug = a.UrlSlug,
-				PostCount = a.Posts.Count(p => p.Published)
-			})
-			.ToPagedListAsync(pagingParams, cancellationToken);
-	}
+    public async Task<IPagedList<AuthorItem>> GetPagedAuthorsAsync(
+            IPagingParams pagingParams,
+            string name = null,
+            CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<Author>()
+            .AsNoTracking()
+            .WhereIf(!string.IsNullOrWhiteSpace(name),
+                x => x.FullName.Contains(name))
+            .Select(a => new AuthorItem()
+            {
+                Id = a.Id,
+                FullName = a.FullName,
+                Email = a.Email,
+                JoinedDate = a.JoinedDate,
+                ImageUrl = a.ImageUrl,
+                UrlSlug = a.UrlSlug,
+                PostCount = a.Posts.Count(p => p.Published)
+            })
+            .ToPagedListAsync(pagingParams, cancellationToken);
+    }
 
-	public async Task<IPagedList<T>> GetPagedAuthorsAsync<T>(
-		Func<IQueryable<Author>, IQueryable<T>> mapper,
-		IPagingParams pagingParams,
-		string name = null,
-		CancellationToken cancellationToken = default)
-	{
-		var authorQuery = _context.Set<Author>().AsNoTracking();
+    public async Task<IPagedList<T>> GetPagedAuthorsAsync<T>(
+        Func<IQueryable<Author>, IQueryable<T>> mapper,
+        IPagingParams pagingParams,
+        string name = null,
+        CancellationToken cancellationToken = default)
+    {
+        var authorQuery = _context.Set<Author>().AsNoTracking();
 
-		if (!string.IsNullOrEmpty(name))
-		{
-			authorQuery = authorQuery.Where(x => x.FullName.Contains(name));
-		}
+        if (!string.IsNullOrEmpty(name))
+        {
+            authorQuery = authorQuery.Where(x => x.FullName.Contains(name));
+        }
 
-		return await mapper(authorQuery)
-			.ToPagedListAsync(pagingParams, cancellationToken);
-	}
+        return await mapper(authorQuery)
+            .ToPagedListAsync(pagingParams, cancellationToken);
+    }
 
-	public async Task<bool> AddOrUpdateAsync(
+    public async Task<bool> AddOrUpdateAsync(
 		Author author, CancellationToken cancellationToken = default)
 	{
 		if (author.Id > 0)

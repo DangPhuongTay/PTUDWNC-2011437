@@ -22,6 +22,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 { 
     app.SetupRequestPipeLine();
+    app.MapTagEndpoints();
     app.MapAuthorEndpoints();
     app.MapCategoryEndpoints();
     app.MapPostEndpoints();

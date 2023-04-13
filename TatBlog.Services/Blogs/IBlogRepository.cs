@@ -22,7 +22,7 @@ namespace TatBlog.Services.Blogs
             CancellationToken cancellationToken = default);
         Task<Category> GetCategoryAsync(
              string slug, CancellationToken cancellationToken = default);
-        //Task<IList<AuthorItem>> GetAuthorsAsync(CancellationToken cancellationToken = default);
+        Task<IList<AuthorItem>> GetAuthorsAsync(CancellationToken cancellationToken = default);
         Task<IPagedList<Category>> GetCategoryByQueryAsync(CategoryQuery query, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default);
         Task<IList<CategoryItem>> GetCategoriesAsync(
        bool showOnMenu = false,
@@ -72,6 +72,13 @@ namespace TatBlog.Services.Blogs
         Func<IQueryable<Post>, IQueryable<T>> mapper);
         Task<Post> GetCachedPostByIdAsync(int id, bool published = false, CancellationToken cancellationToken = default);
         Task<IList<Post>> GetRandomPostsAsync(int n, CancellationToken cancellationToken = default);
+        Task<IPagedList<TagItem>> GetPagedTagsAsync(
+             IPagingParams pagingParams,
+             string name = null,
+             CancellationToken cancellationToken = default);
+        Task<IPagedList<T>> GetTagByQueryAsync<T>(TagQuery query, IPagingParams pagingParams, Func<IQueryable<Tag>, IQueryable<T>> mapper, CancellationToken cancellationToken = default);
+        Task<IList<TagItem>> GetTagsAsync(
+             CancellationToken cancellationToken = default);
     }
 
 

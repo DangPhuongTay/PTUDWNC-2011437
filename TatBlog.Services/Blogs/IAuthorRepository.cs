@@ -20,10 +20,10 @@ public interface IAuthorRepository
 	Task<IList<AuthorItem>> GetAuthorsAsync(
 		CancellationToken cancellationToken = default);
 
-	Task<IPagedList<AuthorItem>> GetPagedAuthorsAsync(
-		IPagingParams pagingParams,
-		string name = null,
-		CancellationToken cancellationToken = default);
+    Task<IPagedList<AuthorItem>> GetPagedAuthorsAsync(
+            IPagingParams pagingParams,
+            string name = null,
+            CancellationToken cancellationToken = default);
 
 	Task<IPagedList<T>> GetPagedAuthorsAsync<T>(
 		Func<IQueryable<Author>, IQueryable<T>> mapper,
@@ -46,4 +46,5 @@ public interface IAuthorRepository
 	Task<bool> SetImageUrlAsync(
 		int authorId, string imageUrl,
 		CancellationToken cancellationToken = default);
+  
 }

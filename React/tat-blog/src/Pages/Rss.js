@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 const Index = () => {
 useEffect(() => {
-document.title = 'RSS';
+document.title = 'Rss';
 }, []);
 return (
 <h1>
