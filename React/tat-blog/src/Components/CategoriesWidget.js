@@ -15,7 +15,7 @@ const CategoriesWidget = () => {
   
   return (
     <div className="mb-4">
-      <h3 className="text-success mb-2">Các chủ đề</h3>
+      <h3 className="text-success mb-2">Danh sache</h3>
       {categoryList.length > 0 && (
         <ListGroup>
           {categoryList.map((item, index) => {
